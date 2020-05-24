@@ -5,7 +5,8 @@
     <title>欢迎界面</title>
 </head>
 <script src="js/jquery-3.4.1.min.js"></script>
-<script>
+<!--垃圾旧代码-->
+<!--<script>
     $(function () {
         $.post("student/findStudent", {}, function (data) {
             var msg = "欢迎回来，" + data.sname;
@@ -16,7 +17,7 @@
         });
 
     });
-</script>
+</script>-->
 <body>
     欢迎回来，<a href="/findSelf">[[${session.loginStu.sname}]]</a>
     <div id="msg"></div>

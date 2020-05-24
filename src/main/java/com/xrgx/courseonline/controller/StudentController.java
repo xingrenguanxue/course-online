@@ -25,7 +25,8 @@ public class StudentController {
         System.out.println(loginStu);
         if (loginStu != null) {
             session.setAttribute("loginStu", loginStu);
-            return "welcome";
+            //不使用重定向则会导致登录拦截校验出问题，由于使用重定向，所以需要给welcome.html设置视图映射
+            return "redirect:/welcome.html";
         }
         else {
             msgMap.put("msg", "用户名或密码错误");

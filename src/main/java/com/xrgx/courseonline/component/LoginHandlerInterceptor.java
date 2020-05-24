@@ -13,13 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Object loginStu = (Student) request.getSession().getAttribute("loginStu");
-        System.out.println(loginStu);
-        if (loginStu == null) {
+        //获取session中的对象
+        Object loginStu = request.getSession().getAttribute("loginStu");
+//        System.out.println(loginStu);
+
+        if (loginStu == null) {//对象为空，转发到首页
             request.setAttribute("msg", "没有权限，请登录");
             request.getRequestDispatcher("/index.html").forward(request, response);
-            return false;
-        } else {
+            return false;//不放行
+        } else {//对象不为空则放行
             return true;
         }
     }
