@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎界面</title>
+</head>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $.post("student/findStudent", {}, function (data) {
+            var msg = "欢迎回来，" + data.sname;
+            $("#msg").html(msg);
+        });
+        $.get("student/countStudent", {}, function (stuNum) {
+            $("#stuNum").html("在线人数：" + stuNum);
+        });
+
+    });
+</script>
+<body>
+    <div id="msg"></div>
+    <div id="stuNum"></div>
+    <a href="javascript:location='alter.html'">修改密码</a><br>
+    <a href="javascript:location.href='student/exit'">退出</a><br>
+    <a href="javascript:location.href='course.html'">选课</a><br>
+    <a href="javascript:location.href='showSelection.html'">查看已选课程</a><br>
+</body>
+</html>

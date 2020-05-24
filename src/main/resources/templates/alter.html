@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改</title>
+</head>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        //给确认密码输入框绑定失去焦点事件，失去焦点即确认
+        var flag = null;
+        $("#newPwd2").blur(function () {
+            flag = verify();
+        });
+        //给确认修改按钮绑定单击事件
+        $("#submit_btn").click(function () {
+            if (flag) {
+                //发送ajax请求，提交form表单
+                $.post("student/changePwd", $("#chagePwdForm").serialize(), function (data) {
+                    if (data.flag) {
+                        location.href = "login.html";
+                    } else {
+                        $("msg").html(data.errorMsg);
+                    }
+                });
+            }
+        });
+    });
+
+    //确认两次输入的密码是否相同
+    function verify() {
+        var newPwd =  $("#newPwd").val();
+        var newPwd2 = $("#newPwd2").val();
+        if (newPwd == newPwd2) {
+            $("#newPwd").css("border", "2px solid green");
+            $("#newPwd2").css("border", "2px solid green");
+            return true;
+        } else {
+            $("#newPwd").css("border", "2px solid red");
+            $("#newPwd2").css("border", "2px solid red");
+            return false;
+        }
+    }
+</script>
+<body>
+    <div id="msg"></div>
+    <form id="chagePwdForm" action="" method="post" accept-charset="utf-8">
+        学号：<input name="sid" type="text" id="sid"><br>
+        原密码：<input  name="oldPwd" type="password" id="spwd"><br>
+        新密码：<input  name="newPwd" type="password" id="newPwd"><br>
+        再输入一次密码：<input  type="password" id="newPwd2"><br>
+        <button type="button" id="submit_btn">确认修改</button>
+    </form>
+
+</body>
+</html>

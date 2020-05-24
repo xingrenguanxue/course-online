@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教师信息</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            //获取地址栏中的参数，即问号及问号以后的内容
+            var search = location.search;
+            //字符串分割，获取tid
+            var tid = search.split("=")[1];
+            var teacher = '<tbody>';
+            $.get("teacher/findTeacher", {tid:tid}, function (resultInfo) {
+                if (resultInfo.flag) {
+                    teacher += '<tr>\n' +
+                        '            <th>'+resultInfo.data.tid+'</th>\n' +
+                        '            <th>'+resultInfo.data.tname+'</th>\n' +
+                        '            <th>'+resultInfo.data.tgender+'</th>\n' +
+                        '            <th>'+resultInfo.data.tage+'</th>\n' +
+                        '            <th>'+resultInfo.data.tcollege+'</th>\n' +
+                        '        </tr>';
+                    teacher += '</tbody>';
+                    $("#teacher_info").append(teacher);
+                } else {
+                    $("#error_msg").html(resultInfo.errorMsg);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="errorMsg"></div>
+    <table id="teacher_info" border="1px" cellspacing="0px" cellpadding="10px">
+        <thead>
+            <tr>
+                <th>教师编号</th>
+                <th>教师姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>学院</th>
+            </tr>
+        </thead>
+    </table>
+
+</body>
+</html>
