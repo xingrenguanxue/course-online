@@ -19,7 +19,17 @@ public class HelloController {
     }
 
     @RequestMapping("/goLogin")
-    public String go() {
+    public String goLogin() {
         return "login";
+    }
+
+    @RequestMapping("/goAlter")
+    public String goAlter() {
+        return "alter";
+    }
+
+    @RequestMapping("/findSelf")
+    public String findSelf() {
+        return "showSelf";
     }
 }

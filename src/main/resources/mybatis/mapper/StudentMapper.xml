@@ -8,4 +8,11 @@
         where sid = #{id}
         and spwd = #{password}
     </select>
+
+    <update id="changPwdByIdAndPwd" parameterType="string">
+        update tab_student
+        set spwd = #{newPwd}
+        where sid = #{sid}
+        and spwd = #{oldPwd}
+    </update>
 </mapper>

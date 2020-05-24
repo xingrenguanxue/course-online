@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface StudentMapper {
 
     Student findStuByUsrAndPwd(String id, String password);
+
+    int changPwdByIdAndPwd(String sid, String oldPwd, String newPwd);
 }

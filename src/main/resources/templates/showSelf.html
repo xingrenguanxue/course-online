@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+<table id="student_info" border="1px" cellspacing="0px" cellpadding="10px">
+    <thead>
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>年级</th>
+        <th>班级</th>
+        <th>专业</th>
+        <th>籍贯</th>
+        <th>出生日期</th>
+        <th>民族</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>[[${session.loginStu.sid}]]</th>
+        <th>[[${session.loginStu.sname}]]</th>
+        <th>[[${session.loginStu.sgender}]]</th>
+        <th>[[${session.loginStu.sage}]]</th>
+        <th>[[${session.loginStu.sgrade}]]</th>
+        <th>[[${session.loginStu.sclass}]]</th>
+        <th>[[${session.loginStu.smajor}]]</th>
+        <th>[[${session.loginStu.splace}]]</th>
+        <th>[[${session.loginStu.sbirth}]]</th>
+        <th>[[${session.loginStu.snation}]]</th>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
