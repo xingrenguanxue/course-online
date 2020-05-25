@@ -42,4 +42,5 @@
 
 # 其他
 使用Thymeleaf模板引擎构建动态页面，能在前端直接获取到controller的Model对象中的值
+
 使用的JQuery的js文件通过引入JQuery的webjar坐标获得
