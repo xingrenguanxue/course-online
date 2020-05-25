@@ -15,10 +15,18 @@ class ApplicationTests {
     @Autowired
     private CourseMapper courseMapper;
 
+    @Autowired
+    private CourseService courseServiceImpl;
+
     @Test
     void contextLoads() {
         List<Course> all = courseMapper.findAll();
         System.out.println(all.size());
     }
 
+    @Test
+    void name() {
+        List<Course> selection = courseServiceImpl.getSelection("1");
+        System.out.println(selection);
+    }
 }

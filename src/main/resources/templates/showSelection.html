@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>已选课程</title>
 </head>
-<script src="js/jquery-3.4.1.min.js"></script>
+
 <script>
-    $(function () {
+/*    $(function () {
         //获取地址栏中的参数，即问号及问号以后的内容
         var search = location.search;
         //字符串分割，获取tid
@@ -47,7 +47,7 @@
                 });
             }
         });
-    });
+    });*/
 </script>
 <body>
 <table id="selected_course" border="1px" cellspacing="0px" cellpadding="10px">
@@ -64,6 +64,40 @@
         <th>退选</th>
     </tr>
     </thead>
+    <tbody>
+    <tr th:each="course:${selection}">
+        <td th:text="${course.cid}"></td>
+        <td th:text="${course.cname}"></td>
+        <td th:text="${course.tid}"></td>
+        <td th:text="${course.chour}"></td>
+        <td th:text="${course.cmark}"></td>
+        <td th:text="${course.ccollege}"></td>
+        <td th:text="${course.cnum}"></td>
+        <td th:text="${course.ctimeplace}"></td>
+
+        <td>
+            <button th:attr="del_uri=@{/course/}+${course.cid}+@{/}+${session.loginStu.sid}" class="deleteBtn">
+                退选
+            </button>
+        </td>
+    </tr>
+    </tbody>
 </table>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script>
+    //监视所有deleteBtn类型的退选按钮，触犯单击就提交
+    $(".deleteBtn").click(function () {
+        if (confirm("确定不学这门课了？")) {
+            //发送ajax请求
+            $.ajax({
+                url : $(this).attr("del_uri"),
+                type : 'delete'
+            });
+            $(this).attr("disabled", true);
+        }
+
+    });
+</script>
 </body>
 </html>

@@ -17,4 +17,23 @@
         where sid = #{sid}
         and cid = #{cid}
     </delete>
+
+    <select id="findSelection" parameterType="string" resultType="course">
+        select tab_course.*
+        from tab_selection, tab_course
+        where tab_selection.sid = #{sid}
+        and tab_selection.cid = tab_course.cid
+    </select>
+
+    <update id="capacityUp" parameterType="string">
+        update tab_course
+        set cnum = cnum + 1
+        where cid = #{cid}
+    </update>
+
+    <update id="capacityDown" parameterType="string">
+        update tab_course
+        set cnum = cnum - 1
+        where cid = #{cid}
+    </update>
 </mapper>

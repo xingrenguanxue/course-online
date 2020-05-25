@@ -17,4 +17,13 @@ public interface CourseMapper {
 
     //删除一条选择
     void deleteSelection(String cid, String sid);
+
+    //查找已选课程
+    List<Course> findSelection(String sid);
+
+    //有人退课，课程容量加一
+    void capacityUp(String cid);
+
+    //有人选课，课程容量减一
+    void capacityDown(String cid);
 }

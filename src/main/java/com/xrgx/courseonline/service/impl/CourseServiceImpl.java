@@ -25,10 +25,19 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void selectCourse(String cid, String sid) {
         courseMapper.insertSelection(cid, sid);
+        courseMapper.capacityDown(cid);
     }
 
     @Override
     public void deleteCourse(String cid, String sid) {
         courseMapper.deleteSelection(cid, sid);
+        courseMapper.capacityUp(cid);
+    }
+
+    @Override
+    public List<Course> getSelection(String sid) {
+        List<Course> list = courseMapper.findSelection(sid);
+        System.out.println(list);
+        return list;
     }
 }

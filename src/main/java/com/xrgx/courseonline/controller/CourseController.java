@@ -34,15 +34,22 @@ public class CourseController {
                          @PathVariable("sid") String sid) {
         System.out.println(cid +"se" + sid);
         courseServiceImpl.selectCourse(cid, sid);
-//        return "redirect:/course.html";
+
     }
 
     //退课
     @DeleteMapping("/course/{cid}/{sid}")
-    public String delete(@PathVariable("cid") String cid,
+    public void delete(@PathVariable("cid") String cid,
                        @PathVariable("sid") String sid) {
         System.out.println(cid +"de" + sid);
         courseServiceImpl.deleteCourse(cid, sid);
-        return "redirect:/course.html";
     }
+
+    @RequestMapping("/course/showSelection/{sid}")
+    public String showSelection(@PathVariable("sid") String sid, Model model) {
+        List<Course> selection =  courseServiceImpl.getSelection(sid);
+        model.addAttribute("selection", selection);
+        return "showSelection";
+    }
+
 }

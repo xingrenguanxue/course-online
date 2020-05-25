@@ -15,4 +15,8 @@ public interface CourseService {
 
     //退课
     void deleteCourse(String cid, String sid);
+
+    //查看已选课程
+    List<Course> getSelection(String sid);
+
 }
