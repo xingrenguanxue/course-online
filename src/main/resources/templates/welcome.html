@@ -20,12 +20,12 @@
 </script>-->
 <body>
     欢迎回来，<a href="/findSelf">[[${session.loginStu.sname}]]</a>
-    <div id="msg"></div>
     <div id="stuNum"></div>
     <a th:href="@{/goAlter}">修改密码</a><br>
     <a th:href="@{/student/exit}">退出</a><br>
     <a th:href="@{/course/showAll}">选课</a><br>
     <a th:href="@{/course/showSelection/}+${session.loginStu.sid}">查看已选课程</a><br>
+
 
 </body>
 </html>

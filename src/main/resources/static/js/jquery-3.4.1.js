@@ -3485,7 +3485,7 @@ jQuery.extend( {
 	Deferred: function( func ) {
 		var tuples = [
 
-				// action, add listener, callbacks,
+				// action, add com.xrgx.courseonline.listener, callbacks,
 				// ... .then handlers, argument index, [final state]
 				[ "notify", "progress", jQuery.Callbacks( "memory" ),
 					jQuery.Callbacks( "memory" ), 2 ],
@@ -5413,7 +5413,7 @@ jQuery.event = {
 	}
 };
 
-// Ensure the presence of an event listener that handles manually-triggered
+// Ensure the presence of an event com.xrgx.courseonline.listener that handles manually-triggered
 // synthetic events by interrupting progress until reinvoked in response to
 // *native* events that it fires directly, ensuring that state changes have
 // already occurred before other listeners are invoked.
