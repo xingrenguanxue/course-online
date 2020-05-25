@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-    @Autowired()
+    @Autowired
     private StudentMapper studentMapper;
     @Override
     public Student login(String id, String password) {

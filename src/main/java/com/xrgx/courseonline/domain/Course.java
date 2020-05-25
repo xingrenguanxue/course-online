@@ -89,5 +89,17 @@ public class Course {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "Course{" +
+                "cid='" + cid + '\'' +
+                ", cname='" + cname + '\'' +
+                ", tid='" + tid + '\'' +
+                ", chour=" + chour +
+                ", cmark=" + cmark +
+                ", ccollege='" + ccollege + '\'' +
+                ", cnum=" + cnum +
+                ", ctimeplace='" + ctimeplace + '\'' +
+                '}';
+    }
 }

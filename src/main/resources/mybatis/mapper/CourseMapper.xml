@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xrgx.courseonline.mapper.CourseMapper">
+    <select id="findAll" resultType="course">
+        select * from tab_course
+    </select>
+
+    <insert id="insertSelection" parameterType="string">
+        insert into tab_selection
+        values (#{sid}, #{cid})
+    </insert>
+
+    <delete id="deleteSelection" parameterType="string">
+        delete from tab_selection
+        where sid = #{sid}
+        and cid = #{cid}
+    </delete>
+</mapper>

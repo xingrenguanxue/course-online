@@ -1,5 +1,6 @@
 package com.xrgx.courseonline.controller;
 
+import jdk.nashorn.internal.ir.ReturnNode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,5 +32,10 @@ public class HelloController {
     @RequestMapping("/findSelf")
     public String findSelf() {
         return "showSelf";
+    }
+
+    @RequestMapping("/goCourse")
+    public String goCourse() {
+        return "course";
     }
 }

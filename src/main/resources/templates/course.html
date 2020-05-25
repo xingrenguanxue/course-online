@@ -3,79 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <title>选课</title>
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script>
+    <!--旧代码-->
+    <!--    <script src="js/jquery-3.3.1.js"></script>-->
+    <!--    <script>
 
-        $(document).ready(function () {
-            var str = '<tbody>';
-            //展示所有课程
-            $.get("course/showAllCourse", {}, function (list) {
-                for (var i = 0; i < list.length; i++) {
-                    var course = list[i];
-                    str += '        <tr>\n' +
-                        '            <td><input type="checkbox" ></td>\n' +
-                        '            <td>'+course.cid+'</td>\n' +
-                        '            <td>'+course.cname+'</td>\n' +
-                        '            <td><a href="showTeacher.html?tid='+course.tid+'" target="_blank">'+course.tid+'</a></td>\n' +
-                        '            <td>'+course.chour+'</td>\n' +
-                        '            <td>'+course.cmark+'</td>\n' +
-                        '            <td>'+course.ccollege+'</td>\n' +
-                        '            <td>'+course.cnum+'</td>\n' +
-                        '             <td>'+course.ctimeplace+'</td>\n' +
-                        '        </tr>';
-                }
-                str += "</tbody>";
-                $("#selection").append(str);
-            });
-            //选课--------多谢郑炜焜
-            var courses = new Array();
-            $('#selection').delegate("input","click",function () {
-                var td = $(this).parents("tr").find("td");
-                if ($(this).prop("checked")) {
-                    courses.push(td.eq(1).text());
-                }
-            });
+            $(document).ready(function () {
+                var str = '<tbody>';
+                //展示所有课程
+                $.get("course/showAllCourse", {}, function (list) {
+                    for (var i = 0; i < list.length; i++) {
+                        var course = list[i];
+                        str += '        <tr>\n' +
+                            '            <td><input type="checkbox" ></td>\n' +
+                            '            <td>'+course.cid+'</td>\n' +
+                            '            <td>'+course.cname+'</td>\n' +
+                            '            <td><a href="showTeacher.html?tid='+course.tid+'" target="_blank">'+course.tid+'</a></td>\n' +
+                            '            <td>'+course.chour+'</td>\n' +
+                            '            <td>'+course.cmark+'</td>\n' +
+                            '            <td>'+course.ccollege+'</td>\n' +
+                            '            <td>'+course.cnum+'</td>\n' +
+                            '             <td>'+course.ctimeplace+'</td>\n' +
+                            '        </tr>';
+                    }
+                    str += "</tbody>";
+                    $("#selection").append(str);
+                });
+                //选课&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;多谢郑炜焜
+                var courses = new Array();
+                $('#selection').delegate("input","click",function () {
+                    var td = $(this).parents("tr").find("td");
+                    if ($(this).prop("checked")) {
+                        courses.push(td.eq(1).text());
+                    }
+                });
 
-            $.post("student/findStudent", {}, function (student) {
-               if (student) {
-                   $("#submit_course").click(function(){
-                       $.get("course/selectCourse", {courses:courses.toString()}, function (data) {
-                           alert(data.errorMsg);
-                           if (data.flag) {
-                               location.href = "showSelection.html";
-                           }
+                $.post("student/findStudent", {}, function (student) {
+                   if (student) {
+                       $("#submit_course").click(function(){
+                           $.get("course/selectCourse", {courses:courses.toString()}, function (data) {
+                               alert(data.errorMsg);
+                               if (data.flag) {
+                                   location.href = "showSelection.html";
+                               }
+                           });
                        });
-                   });
-               } else {
-                   alert("尚未登录");
-               }
+                   } else {
+                       alert("尚未登录");
+                   }
+                });
+
             });
 
-        });
 
 
+        </script>-->
 
-    </script>
+
 </head>
 <body>
-<button id="submit_course" >确认选课</button>
 
-    <table id="selection" border="1px" cellspacing="0px" cellpadding="10px">
-        <thead>
-        <tr>
-            <th>选课</th>
-            <th>课程编号</th>
-            <th>课程名</th>
-            <th>授课教师</th>
-            <th>学时</th>
-            <th>学分</th>
-            <th>所属学院</th>
-            <th>学生容量</th>
-            <th>时间地点</th>
-        </tr>
-        </thead>
-    </table>
+<table id="selection" border="1px" cellspacing="0px" cellpadding="10px">
+    <thead>
+    <tr>
+        <th>课程编号</th>
+        <th>课程名</th>
+        <th>授课教师</th>
+        <th>学时</th>
+        <th>学分</th>
+        <th>所属学院</th>
+        <th>学生容量</th>
+        <th>时间地点</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="course:${courseList}">
+        <td th:text="${course.cid}"></td>
+        <td th:text="${course.cname}"></td>
+        <td th:text="${course.tid}"></td>
+        <td th:text="${course.chour}"></td>
+        <td th:text="${course.cmark}"></td>
+        <td th:text="${course.ccollege}"></td>
+        <td th:text="${course.cnum}"></td>
+        <td th:text="${course.ctimeplace}"></td>
 
+        <td>
+            <button th:attr="select_uri=@{/course/}+${course.cid}+@{/}+${session.loginStu.sid}"
+                    class="selectBtn">选课
+            </button>
+            <!--                <a th:href="@{/course/select/}+${course.cid}+@{/}+${session.loginStu.sid}">选课</a>-->
+            <button th:attr="del_uri=@{/course/}+${course.cid}+@{/}+${session.loginStu.sid}" class="deleteBtn">
+                退选
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script>
+
+    //使用restful风格，post请求为选课，delete请求为退课
+
+    //监视所有selectBtn类型的选课按钮，触犯单击就发送ajax请求
+    //使用ajax的原因：如果使用href或form这种方式提交请求会导致页面跳转，虽然可以重定向
+    //回该页面，但是由于该页面的信息是通过showAll请求获取的，所以一旦重定向，课程信息就会被
+    //刷新掉，所以应该使用ajax请求进行局部的异步刷新
+    $(".selectBtn").click(function () {
+        // alert($(this).attr("select_uri"));
+        if (confirm("确定要学这门课？")) {
+            //发送ajax请求
+            $.ajax({
+                url : $(this).attr("select_uri"),
+                type : 'post'
+            });
+            //禁用按钮，防止多次提交导致数据库错误
+            $(this).attr("disabled", true);
+        }
+
+    });
+
+    //监视所有deleteBtn类型的退选按钮，触犯单击就提交
+    $(".deleteBtn").click(function () {
+        if (confirm("确定不学这门课了？")) {
+            //发送ajax请求
+            $.ajax({
+                url : $(this).attr("del_uri"),
+                type : 'delete'
+            });
+            $(this).attr("disabled", true);
+        }
+
+    });
+
+
+
+</script>
 
 </body>
 

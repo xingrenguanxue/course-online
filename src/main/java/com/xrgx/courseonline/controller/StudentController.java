@@ -1,6 +1,7 @@
 package com.xrgx.courseonline.controller;
 
 import com.xrgx.courseonline.domain.Student;
+import com.xrgx.courseonline.service.CourseService;
 import com.xrgx.courseonline.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
