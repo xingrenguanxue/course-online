@@ -58,4 +58,14 @@ public class Teacher {
         this.tcollege = tcollege;
     }
 
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "tid='" + tid + '\'' +
+                ", tname='" + tname + '\'' +
+                ", tgender='" + tgender + '\'' +
+                ", tage=" + tage +
+                ", tcollege='" + tcollege + '\'' +
+                '}';
+    }
 }

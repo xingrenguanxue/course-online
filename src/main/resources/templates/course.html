@@ -82,7 +82,7 @@
     <tr th:each="course:${courseList}">
         <td th:text="${course.cid}"></td>
         <td th:text="${course.cname}"></td>
-        <td th:text="${course.tid}"></td>
+        <td><a th:href="'/teacher/'+${course.tid}" th:text="${course.tid}"></a></td>
         <td th:text="${course.chour}"></td>
         <td th:text="${course.cmark}"></td>
         <td th:text="${course.ccollege}"></td>
