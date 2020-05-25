@@ -24,9 +24,5 @@ public class MvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/index.html", "/", "/student/login", "/goLogin");
     }
 
-    //jquery
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-    }
+
 }

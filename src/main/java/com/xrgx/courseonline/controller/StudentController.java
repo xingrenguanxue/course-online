@@ -1,8 +1,7 @@
 package com.xrgx.courseonline.controller;
 
 import com.xrgx.courseonline.domain.Student;
-import com.xrgx.courseonline.listener.CountListener;
-import com.xrgx.courseonline.service.CourseService;
+
 import com.xrgx.courseonline.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,14 +59,6 @@ public class StudentController {
     public String exit(HttpSession session) {
         session.invalidate();
         return "index";
-    }
-
-    @RequestMapping("/student/getNum")
-    public String getOnlineNum(Model model) {
-        int num = CountListener.getNum();
-        System.out.println(num);
-        model.addAttribute("num", num);
-        return "welcome";
     }
 
 
