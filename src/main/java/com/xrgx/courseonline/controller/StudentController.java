@@ -40,6 +40,7 @@ public class StudentController {
                             @RequestParam("oldPwd") String oldPwd,
                             @RequestParam("newPwd") String newPwd,
                             Map<String, Object> msgMap) {
+        System.out.println(sid + "--" + oldPwd + "--"+newPwd);
         boolean flag = studentServiceImpl.changePwd(sid, oldPwd, newPwd);
         if (flag) {
             msgMap.put("msg", "修改成功，请重新登录");

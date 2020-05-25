@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>修改密码</title>
 </head>
-<script src="js/jquery-3.3.1.js"></script>
-<script>
+
 <!-- 垃圾旧代码 滚一边去 -->
-/*    $(function () {
+<!--<script>
+    $(function () {
         //给确认密码输入框绑定失去焦点事件，失去焦点即确认
         var flag = null;
         $("#newPwd2").blur(function () {
@@ -26,32 +26,11 @@
                 });
             }
         });
-    });*/
-
-    //这个函数还有点用，先留着
-    //确认两次输入的密码是否相同
-    function verify() {
-        var newPwd =  $("#newPwd").val();
-        var newPwd2 = $("#newPwd2").val();
-        if (newPwd == newPwd2) {
-            $("#newPwd").css("border", "2px solid green");
-            $("#newPwd2").css("border", "2px solid green");
-            return true;
-        } else {
-            $("#newPwd").css("border", "2px solid red");
-            $("#newPwd2").css("border", "2px solid red");
-            return false;
-        }
-    }
-
-    //给确认密码输入框绑定失去焦点事件，失去焦点即确认
-    var flag = null;
-    $("#newPwd2").blur(function () {
-        flag = verify();
     });
-</script>
+</script>-->
+
 <body>
-    <div id="msg"></div>
+    <p style="color: red" th:text="${msg}"></p>
 <!-- 这tm 写的什么玩意 为什么去年会用button ajax局部刷新 坑坑坑？？？-->
 <!--    <form id="chagePwdForm" action="student/changePwd" method="post" accept-charset="utf-8">
         学号：<input name="sid" type="text" id="sid"><br>
@@ -60,12 +39,38 @@
         再输入一次密码：<input  type="password" id="newPwd2"><br>
         <button type="button" id="submit_btn">确认修改</button>
     </form>-->
-    <form id="chagePwdForm" action="student/changePwd" method="post" accept-charset="utf-8">
+    <form id="chagePwdForm" action="/student/changePwd" method="post" accept-charset="utf-8">
         学号：<input name="sid" type="text" id="sid"><br>
         原密码：<input  name="oldPwd" type="password" id="spwd"><br>
         新密码：<input  name="newPwd" type="password" id="newPwd"><br>
         再输入一次密码：<input  type="password" id="newPwd2"><br>
-        <input type="submit" value="修改">
+        <input id="submit-btn" disabled type="submit" value="修改">
     </form>
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <script>
+        //给确认密码输入框绑定失去焦点事件，失去焦点即确认
+        var flag = null;
+        $("#newPwd2").blur(function () {
+            flag = verify();
+        });
+        //这个函数还有点用，先留着
+        //确认两次输入的密码是否相同
+        function verify() {
+            var newPwd =  $("#newPwd").val();
+            var newPwd2 = $("#newPwd2").val();
+            if (newPwd == newPwd2) {
+                $("#newPwd").css("border", "2px solid green");
+                $("#newPwd2").css("border", "2px solid green");
+                $("#submit-btn").attr("disabled", false);
+                return true;
+            } else {
+                $("#newPwd").css("border", "2px solid red");
+                $("#newPwd2").css("border", "2px solid red");
+                $("#submit-btn").attr("disabled", true);
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

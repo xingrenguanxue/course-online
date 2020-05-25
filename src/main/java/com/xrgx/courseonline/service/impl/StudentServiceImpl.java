@@ -19,9 +19,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean changePwd(String sid, String oldPwd, String newPwd) {
 
-        int row = studentMapper.changPwdByIdAndPwd(sid, oldPwd, newPwd);
-        if (row < 0)
-            return false;
-        return true;
+        int i = studentMapper.changPwdByIdAndPwd(sid, oldPwd, newPwd);
+        System.out.println(i);
+        if (i == 1)
+            return true;
+        return false;
     }
 }

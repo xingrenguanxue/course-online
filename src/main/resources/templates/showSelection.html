@@ -6,6 +6,7 @@
 </head>
 
 <script>
+<!--旧代码-->
 /*    $(function () {
         //获取地址栏中的参数，即问号及问号以后的内容
         var search = location.search;
@@ -68,7 +69,7 @@
     <tr th:each="course:${selection}">
         <td th:text="${course.cid}"></td>
         <td th:text="${course.cname}"></td>
-        <td th:text="${course.tid}"></td>
+        <td><a th:href="'/teacher/'+${course.tid}" th:text="${course.tid}"></a></td>
         <td th:text="${course.chour}"></td>
         <td th:text="${course.cmark}"></td>
         <td th:text="${course.ccollege}"></td>

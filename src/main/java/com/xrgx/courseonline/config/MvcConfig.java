@@ -15,6 +15,7 @@ public class MvcConfig implements WebMvcConfigurer {
         //有重定向，所以添加视图映射
         registry.addViewController("/welcome.html").setViewName("welcome");
         registry.addViewController("/course.html").setViewName("course");
+        registry.addViewController("/alter.html").setViewName("alter");
     }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
