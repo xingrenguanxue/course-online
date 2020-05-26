@@ -30,6 +30,7 @@ public class CourseController {
 
     //选课
     @PostMapping("/course/{cid}/{sid}")
+    @ResponseBody
     public void select(@PathVariable("cid") String cid,
                          @PathVariable("sid") String sid) {
         System.out.println(cid +"se" + sid);
@@ -39,6 +40,7 @@ public class CourseController {
 
     //退课
     @DeleteMapping("/course/{cid}/{sid}")
+    @ResponseBody
     public void delete(@PathVariable("cid") String cid,
                        @PathVariable("sid") String sid) {
         System.out.println(cid +"de" + sid);

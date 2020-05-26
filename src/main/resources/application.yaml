@@ -3,7 +3,7 @@ spring:
     #数据源基本配置
     username: root
     password: 123456
-    url: jdbc:mysql://127.0.0.1:3306/course_online?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/course_online?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 #    schema:
@@ -22,12 +22,15 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-    filters: stat,wall,logback
+    filters: stat,wall,log4j
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
   thymeleaf:
     cache: false
+    prefix: classpath:/templates/
+    suffix: .html
   mvc:
     hiddenmethod:
       filter:
@@ -38,4 +41,5 @@ mybatis:
 
 #debug: true
 
-
+#server:
+#  port: 8081

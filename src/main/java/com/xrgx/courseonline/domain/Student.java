@@ -5,8 +5,8 @@ public class Student {
     private String sname;//姓名
     private String spwd;//密码
     private String sgender;//性别
-    private int sage;//年龄
-    private int sgrade;//年级
+    private Integer sage;//年龄
+    private Integer sgrade;//年级
     private String sclass;//班级
     private String smajor;//专业
     private String splace;//籍贯
@@ -16,7 +16,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(String sid, String sname, String spwd, String sgender, int sage, int sgrade, String sclass, String smajor, String splace, String sbirth, String snation) {
+    public Student(String sid, String sname, String spwd, String sgender, Integer sage, Integer sgrade, String sclass, String smajor, String splace, String sbirth, String snation) {
         this.sid = sid;
         this.sname = sname;
         this.spwd = spwd;
@@ -62,19 +62,19 @@ public class Student {
         this.sgender = sgender;
     }
 
-    public int getSage() {
+    public Integer getSage() {
         return sage;
     }
 
-    public void setSage(int sage) {
+    public void setSage(Integer sage) {
         this.sage = sage;
     }
 
-    public int getSgrade() {
+    public Integer getSgrade() {
         return sgrade;
     }
 
-    public void setSgrade(int sgrade) {
+    public void setSgrade(Integer sgrade) {
         this.sgrade = sgrade;
     }
 

@@ -4,10 +4,13 @@ public class Teacher {
     private String tid;//教师编号
     private String tname;//教师姓名
     private String tgender;//性别
-    private int tage;//年龄
+    private Integer tage;//年龄
     private String tcollege;//学院
 
-    public Teacher(String tid, String tname, String tgender, int tage, String tcollege) {
+    public Teacher() {
+    }
+
+    public Teacher(String tid, String tname, String tgender, Integer tage, String tcollege) {
         this.tid = tid;
         this.tname = tname;
         this.tgender = tgender;
@@ -15,7 +18,12 @@ public class Teacher {
         this.tcollege = tcollege;
     }
 
-    public Teacher() {
+    public Integer getTage() {
+        return tage;
+    }
+
+    public void setTage(Integer tage) {
+        this.tage = tage;
     }
 
     public String getTid() {
@@ -40,14 +48,6 @@ public class Teacher {
 
     public void setTgender(String tgender) {
         this.tgender = tgender;
-    }
-
-    public int getTage() {
-        return tage;
-    }
-
-    public void setTage(int tage) {
-        this.tage = tage;
     }
 
     public String getTcollege() {

@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <title>登录</title>
-    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+
 
 <!--旧代码-->
 <!--    <script src="js/jquery-3.3.1.js"></script>
@@ -29,7 +29,7 @@
 
 
 </head>
-<body class="text-center">
+<body>
 
 <!--旧代码-->
 <!--<form id="loginForm" action="" method="post" accept-charset="utf-8">
@@ -41,7 +41,7 @@
     <button type="button" id="submit_btn">登录</button>
 </form>-->
 
-<form id="loginForm" action="/student/login" method="post" accept-charset="utf-8">
+<form id="loginForm" action="student/login" method="post" accept-charset="utf-8">
     <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
 
     学号：<input name="id" type="text" id="username" autocomplete="off"><br>
@@ -50,6 +50,7 @@
     <input type="submit" value="登录">
 </form>
 
-
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<!--<script type="text/javascript" src="js/jquery-3.4.1.js"></script>-->
 </body>
 </html>

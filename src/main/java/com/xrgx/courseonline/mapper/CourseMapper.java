@@ -2,11 +2,13 @@ package com.xrgx.courseonline.mapper;
 
 import com.xrgx.courseonline.domain.Course;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
 
 @Mapper
+@Component
 public interface CourseMapper {
 
     //全部课程
