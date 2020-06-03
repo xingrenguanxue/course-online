@@ -5,20 +5,7 @@
     <title>欢迎界面</title>
 </head>
 <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
-<!--<script type="text/javascript" src="js/jquery-3.4.1.js"></script>-->
-<!--垃圾旧代码-->
-<!--<script>
-    $(function () {
-        $.post("student/findStudent", {}, function (data) {
-            var msg = "欢迎回来，" + data.sname;
-            $("#msg").html(msg);
-        });
-        $.get("student/countStudent", {}, function (stuNum) {
-            $("#stuNum").html("在线人数：" + stuNum);
-        });
 
-    });
-</script>-->
 <body>
     欢迎回来，<a href="/findSelf">[[${session.loginStu.sname}]]</a>
     <div id="stuNum"></div>

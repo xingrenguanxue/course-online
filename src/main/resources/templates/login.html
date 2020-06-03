@@ -6,40 +6,10 @@
     <title>登录</title>
 
 
-<!--旧代码-->
-<!--    <script src="js/jquery-3.3.1.js"></script>
-    <script>
-        //入口函数
-        $(function () {
-            //给登录按钮绑定单击事件
-            $("#submit_btn").click(function () {
-                //发送ajax请求，提交form表单
-                $.post("student/login", $("#loginForm").serialize(), function (data) {
-                    if (data.flag) {
-                        location.href = "welcome.html";
-                    } else {
-                        $("#error_msg").html(data.errorMsg);
-                    }
-                });
-
-            });
-        });
-
-    </script>-->
-
-
 </head>
 <body>
 
-<!--旧代码-->
-<!--<form id="loginForm" action="" method="post" accept-charset="utf-8">
-    <div id="error_msg"></div>
 
-    学号：<input name="id" type="text" id="username" autocomplete="off"><br>
-    密码：<input name="password" type="password" id="password" autocomplete="off"><br>
-
-    <button type="button" id="submit_btn">登录</button>
-</form>-->
 
 <form id="loginForm" action="student/login" method="post" accept-charset="utf-8">
     <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>

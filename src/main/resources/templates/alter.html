@@ -5,40 +5,10 @@
     <title>修改密码</title>
 </head>
 
-<!-- 垃圾旧代码 滚一边去 -->
-<!--<script>
-    $(function () {
-        //给确认密码输入框绑定失去焦点事件，失去焦点即确认
-        var flag = null;
-        $("#newPwd2").blur(function () {
-            flag = verify();
-        });
-        //给确认修改按钮绑定单击事件
-        $("#submit_btn").click(function () {
-            if (flag) {
-                //发送ajax请求，提交form表单
-                $.post("student/changePwd", $("#chagePwdForm").serialize(), function (data) {
-                    if (data.flag) {
-                        location.href = "login.html";
-                    } else {
-                        $("msg").html(data.errorMsg);
-                    }
-                });
-            }
-        });
-    });
-</script>-->
 
 <body>
     <p style="color: red" th:text="${msg}"></p>
-<!-- 这tm 写的什么玩意 为什么去年会用button ajax局部刷新 坑坑坑？？？-->
-<!--    <form id="chagePwdForm" action="student/changePwd" method="post" accept-charset="utf-8">
-        学号：<input name="sid" type="text" id="sid"><br>
-        原密码：<input  name="oldPwd" type="password" id="spwd"><br>
-        新密码：<input  name="newPwd" type="password" id="newPwd"><br>
-        再输入一次密码：<input  type="password" id="newPwd2"><br>
-        <button type="button" id="submit_btn">确认修改</button>
-    </form>-->
+
     <form id="chagePwdForm" action="/student/changePwd" method="post" accept-charset="utf-8">
         学号：<input name="sid" type="text" id="sid"><br>
         原密码：<input  name="oldPwd" type="password" id="spwd"><br>

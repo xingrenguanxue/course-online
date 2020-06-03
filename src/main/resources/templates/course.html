@@ -3,61 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>选课</title>
-    <!--旧代码-->
-    <!--    <script src="js/jquery-3.3.1.js"></script>-->
-    <!--    <script>
-
-            $(document).ready(function () {
-                var str = '<tbody>';
-                //展示所有课程
-                $.get("course/showAllCourse", {}, function (list) {
-                    for (var i = 0; i < list.length; i++) {
-                        var course = list[i];
-                        str += '        <tr>\n' +
-                            '            <td><input type="checkbox" ></td>\n' +
-                            '            <td>'+course.cid+'</td>\n' +
-                            '            <td>'+course.cname+'</td>\n' +
-                            '            <td><a href="showTeacher.html?tid='+course.tid+'" target="_blank">'+course.tid+'</a></td>\n' +
-                            '            <td>'+course.chour+'</td>\n' +
-                            '            <td>'+course.cmark+'</td>\n' +
-                            '            <td>'+course.ccollege+'</td>\n' +
-                            '            <td>'+course.cnum+'</td>\n' +
-                            '             <td>'+course.ctimeplace+'</td>\n' +
-                            '        </tr>';
-                    }
-                    str += "</tbody>";
-                    $("#selection").append(str);
-                });
-                //选课&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;多谢郑炜焜
-                var courses = new Array();
-                $('#selection').delegate("input","click",function () {
-                    var td = $(this).parents("tr").find("td");
-                    if ($(this).prop("checked")) {
-                        courses.push(td.eq(1).text());
-                    }
-                });
-
-                $.post("student/findStudent", {}, function (student) {
-                   if (student) {
-                       $("#submit_course").click(function(){
-                           $.get("course/selectCourse", {courses:courses.toString()}, function (data) {
-                               alert(data.errorMsg);
-                               if (data.flag) {
-                                   location.href = "showSelection.html";
-                               }
-                           });
-                       });
-                   } else {
-                       alert("尚未登录");
-                   }
-                });
-
-            });
-
-
-
-        </script>-->
-
 
 </head>
 <body>
